@@ -7,6 +7,7 @@ Binance Crypto Currency Client SDK
 <strong>Master branch</strong><br />
 <img src="https://ci.appveyor.com/api/projects/status/github/alexandrebl/BinanceCryptoCurrency?branch=master&svg=true" alt="Project Badge" with="300">
 
+### TickerController.cs
 ```cs
 using BinanceCryptoCurrency.Domain;
 using BinanceCryptoCurrency.Processor;
@@ -32,6 +33,74 @@ namespace CryptoCurrencyInfo.Controllers {
     }
 }
 ```
+### StartUp.cs
+```cs
+using BinanceCryptoCurrency.Processor;
+using BinanceCryptoCurrency.Utility;
+using CryptoCurrencyInfo.Library;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using System;
+
+namespace CryptoCurrencyInfo {
+
+    public class Startup {
+
+        public Startup(IConfiguration configuration) {
+            Configuration = configuration;
+        }
+
+        public IConfiguration Configuration { get; }
+
+        public static void ConfigureServices(IServiceCollection services) {
+            var configurationFileApp = new ConfigurationFileApp();
+            services.AddMvc();
+            services.AddSingleton<IBinanceProcessor>(
+                new BinanceProcessor(new Uri(configurationFileApp.BinanceUrl), new Logger()));
+        }
+
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env) {
+            if (env.IsDevelopment()) {
+                app.UseDeveloperExceptionPage();
+            }
+
+            app.UseMvc();
+        }
+    }
+}
+```
+
+### ConfigurationFileApp.cs
+```cs
+using Microsoft.Extensions.Configuration;
+using System.IO;
+
+namespace CryptoCurrencyInfo.Library {
+
+    public sealed class ConfigurationFileApp : IConfigurationFileApp {
+        public ConfigurationFileApp() {
+            var builder = new ConfigurationBuilder().SetBasePath(
+                Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json");
+
+            var configuration = builder.Build();
+
+            BinanceUrl = configuration[$"BinanceUrl"];
+        }
+
+        public string BinanceUrl { get; }
+    }
+}
+```
+
+### appsettings.json
+```json
+{
+  "BinanceUrl": "http://www.binance.com/api/v1/ticker/24hr"
+}
+```
+
 ### How to use on Package Manager
 Install-Package BinanceCryptoCurrency -Version 0.0.2
 
