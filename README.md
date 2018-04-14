@@ -45,7 +45,7 @@ namespace CryptoCurrencyInfo.Controllers {
     }
 }
 ```
-### StartUp.cs
+#### StartUp.cs
 ```cs
 using BinanceCryptoCurrency.Processor;
 using BinanceCryptoCurrency.Utility;
@@ -84,7 +84,7 @@ namespace CryptoCurrencyInfo {
 }
 ```
 
-### ConfigurationFileApp.cs
+#### ConfigurationFileApp.cs
 ```cs
 using Microsoft.Extensions.Configuration;
 using System.IO;
@@ -106,24 +106,9 @@ namespace CryptoCurrencyInfo.Library {
 }
 ```
 
-### appsettings.json
+#### appsettings.json
 ```json
 {
   "BinanceUrl": "http://www.binance.com/api/v1/ticker/24hr"
 }
 ```
-
-### How to use on Package Manager
-Install-Package BinanceCryptoCurrency -Version 0.0.2
-
-### How to use on .Net CLI
-dotnet add package BinanceCryptoCurrency --version 0.0.2
-
-### How to use on Paket CLI
-paket add BinanceCryptoCurrency --version 0.0.2
-
-### Nuget Package
-https://www.nuget.org/packages/BinanceCryptoCurrency/
-
-### Project example
-https://github.com/alexandrebl/CryptoCurrencyInfo
