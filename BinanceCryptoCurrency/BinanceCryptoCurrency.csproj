@@ -18,4 +18,8 @@
     <FileVersion>0.0.1.0</FileVersion>
   </PropertyGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+  </ItemGroup>
+
 </Project>

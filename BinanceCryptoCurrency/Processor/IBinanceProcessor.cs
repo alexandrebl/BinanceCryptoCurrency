@@ -5,6 +5,6 @@ namespace BinanceCryptoCurrency.Processor {
 
     public interface IBinanceProcessor {
 
-        IEnumerable<Ticker> GetTickerLast24Hs();
+        Response GetTickerLast24Hs();
     }
 }

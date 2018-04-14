@@ -1,24 +1,59 @@
 ﻿using BinanceCryptoCurrency.Domain;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Net;
+using System.Net.Http;
+using BinanceCryptoCurrency.Domain.Entity;
+using BinanceCryptoCurrency.Utility;
+using Newtonsoft.Json;
 
 namespace BinanceCryptoCurrency.Processor {
 
     public class BinanceProcessor : IBinanceProcessor {
-        public readonly Uri Uri;
+        readonly Uri Uri;
+        private readonly ILogger Logger;
 
-        public BinanceProcessor(Uri uri) {
+        public BinanceProcessor(Uri uri, ILogger logger) {
             Uri = uri;
+            Logger = logger;
         }
 
-        public IEnumerable<Ticker> GetTickerLast24Hs() {
-            var tickers = new List<Ticker>
-            {
-                new Ticker {Symbol = "ETH", LastPrice = 1, LastQty = 0.1},
-                new Ticker {Symbol = "BTC", LastPrice = 2, LastQty = 0.2}
-            };
+        public Response GetTickerLast24Hs() {
+            var httpResponseMessage = Get(Uri);
 
-            return tickers;
+
+            return ParseHttpContent(httpResponseMessage);
+        }
+
+        Response ParseHttpContent(HttpResponseMessage httpResponseMessage) {
+            if (!httpResponseMessage.IsSuccessStatusCode)
+                return new Response {
+                    StatusCode = HttpStatusCode.InternalServerError,
+                    Erros = new Collection<Error>()
+                    {
+                        new Error
+                        {
+                            Message = "Internal Server Error"
+                        }
+                    }
+                };
+
+            var content = httpResponseMessage.Content;
+            var tickers = JsonConvert.DeserializeObject<IEnumerable<Ticker>>(content.ReadAsStringAsync().Result);
+
+            var response = new Response { Tickers = tickers, StatusCode = HttpStatusCode.OK };
+
+            return response;
+
+        }
+
+        HttpResponseMessage Get(Uri uri) {
+            var httpUtilityTool = new HttpUtilityTool(Logger);
+
+            var httpResponseMessage = httpUtilityTool.GetData(uri);
+
+            return httpResponseMessage;
         }
     }
 }
