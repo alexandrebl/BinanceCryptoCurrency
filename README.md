@@ -7,6 +7,21 @@ Binance Crypto Currency Client SDK
 <strong>Master branch</strong><br />
 <img src="https://ci.appveyor.com/api/projects/status/github/alexandrebl/BinanceCryptoCurrency?branch=master&svg=true" alt="Project Badge" with="300">
 
+###How to use
+- Package Manager: Install-Package BinanceCryptoCurrency -Version 0.0.2
+
+How to use on .Net CLI
+dotnet add package BinanceCryptoCurrency --version 0.0.2
+
+How to use on Paket CLI
+paket add BinanceCryptoCurrency --version 0.0.2
+
+Nuget Package
+https://www.nuget.org/packages/BinanceCryptoCurrency/
+
+Project example
+https://github.com/alexandrebl/CryptoCurrencyInfo
+
 ### TickerController.cs
 ```cs
 using BinanceCryptoCurrency.Domain;
