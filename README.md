@@ -1,4 +1,4 @@
-# BinanceCryptoCurrency
+# BinanceCryptoCurrency 0.0.2 (beta version)
 Binance Crypto Currency Client SDK
 
 <strong>Develop branch</strong><br />
