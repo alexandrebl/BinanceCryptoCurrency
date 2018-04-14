@@ -31,4 +31,15 @@ namespace CryptoCurrencyInfo.Controllers {
         }
     }
 }
-```cs
+```
+### How to use on Package Manager
+Install-Package BinanceCryptoCurrency -Version 0.0.2
+
+### How to use on .Net CLI
+dotnet add package BinanceCryptoCurrency --version 0.0.2
+
+### How to use on Paket CLI
+paket add BinanceCryptoCurrency --version 0.0.2
+
+### Project example
+https://github.com/alexandrebl/CryptoCurrencyInfo
