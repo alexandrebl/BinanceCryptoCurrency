@@ -41,5 +41,8 @@ dotnet add package BinanceCryptoCurrency --version 0.0.2
 ### How to use on Paket CLI
 paket add BinanceCryptoCurrency --version 0.0.2
 
+###Nuget Package
+https://www.nuget.org/packages/BinanceCryptoCurrency/
+
 ### Project example
 https://github.com/alexandrebl/CryptoCurrencyInfo
