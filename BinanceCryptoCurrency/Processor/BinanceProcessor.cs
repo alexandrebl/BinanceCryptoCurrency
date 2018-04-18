@@ -11,7 +11,7 @@ using System.Net.Http;
 namespace BinanceCryptoCurrency.Processor {
 
     public class BinanceProcessor : IBinanceProcessor {
-        readonly Uri _uri;
+        private readonly Uri _uri;
 
         public BinanceProcessor(Uri uri) {
             _uri = uri;
@@ -23,11 +23,11 @@ namespace BinanceCryptoCurrency.Processor {
             return ParseHttpContent(httpResponseMessage);
         }
 
-        private Response ParseHttpContent(HttpResponseMessage httpResponseMessage) {
+        private static Response ParseHttpContent(HttpResponseMessage httpResponseMessage) {
             if (!httpResponseMessage.IsSuccessStatusCode)
                 return new Response {
                     StatusCode = HttpStatusCode.InternalServerError,
-                    Erros = new Collection<Error>()
+                    Erros = new Collection<Error>
                     {
                         new Error
                         {
@@ -44,7 +44,7 @@ namespace BinanceCryptoCurrency.Processor {
             return response;
         }
 
-        HttpResponseMessage Get(Uri uri) {
+        private static HttpResponseMessage Get(Uri uri) {
             var httpUtilityTool = new HttpUtilityTool();
 
             var httpResponseMessage = httpUtilityTool.GetData(uri);
