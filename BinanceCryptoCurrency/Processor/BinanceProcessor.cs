@@ -11,16 +11,14 @@ using Newtonsoft.Json;
 namespace BinanceCryptoCurrency.Processor {
 
     public class BinanceProcessor : IBinanceProcessor {
-        readonly Uri Uri;
-        private readonly ILogger Logger;
-
-        public BinanceProcessor(Uri uri, ILogger logger) {
-            Uri = uri;
-            Logger = logger;
+        readonly Uri _uri;
+        
+        public BinanceProcessor(Uri uri) {
+            _uri = uri;
         }
 
         public Response GetTickerLast24Hs() {
-            var httpResponseMessage = Get(Uri);
+            var httpResponseMessage = Get(_uri);
 
 
             return ParseHttpContent(httpResponseMessage);
@@ -49,7 +47,7 @@ namespace BinanceCryptoCurrency.Processor {
         }
 
         HttpResponseMessage Get(Uri uri) {
-            var httpUtilityTool = new HttpUtilityTool(Logger);
+            var httpUtilityTool = new HttpUtilityTool();
 
             var httpResponseMessage = httpUtilityTool.GetData(uri);
 

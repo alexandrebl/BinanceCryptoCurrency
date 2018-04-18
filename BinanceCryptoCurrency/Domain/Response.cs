@@ -1,11 +1,10 @@
-﻿using System;
+﻿using BinanceCryptoCurrency.Domain.Entity;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
-using System.Text;
-using BinanceCryptoCurrency.Domain.Entity;
 
 namespace BinanceCryptoCurrency.Domain {
+
     public sealed class Response {
         public IEnumerable<Ticker> Tickers { get; set; }
         public HttpStatusCode StatusCode { get; set; }

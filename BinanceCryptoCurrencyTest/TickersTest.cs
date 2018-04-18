@@ -4,7 +4,6 @@ using System;
 using System.Linq;
 using System.Net;
 using BinanceCryptoCurrency;
-using BinanceCryptoCurrency.Utility;
 
 namespace BinanceCryptoCurrencyTest {
 
@@ -14,7 +13,7 @@ namespace BinanceCryptoCurrencyTest {
         [TestMethod]
         public void Last24HsSuccess() {
             var clientSdk = new BinanceClientSdk(new 
-                BinanceProcessor(new Uri("http://www.binance.com/api/v1/ticker/24hr"), new Logger()));
+                BinanceProcessor(new Uri("http://www.binance.com/api/v1/ticker/24hr")));
 
             var response = clientSdk.GetTickerLast24Hs();
 
@@ -27,7 +26,7 @@ namespace BinanceCryptoCurrencyTest {
         [TestMethod]
         public void Last24HsUriError() {
             var clientSdk = new BinanceClientSdk(new
-                BinanceProcessor(new Uri("http://www.binance.com/api/v1/ticker/xxx"), new Logger()));
+                BinanceProcessor(new Uri("http://www.binance.com/api/v1/ticker/xxx")));
 
             var response = clientSdk.GetTickerLast24Hs();
 

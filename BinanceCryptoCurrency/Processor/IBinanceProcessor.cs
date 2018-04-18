@@ -1,5 +1,4 @@
 ﻿using BinanceCryptoCurrency.Domain;
-using System.Collections.Generic;
 
 namespace BinanceCryptoCurrency.Processor {
 
