@@ -70,7 +70,7 @@ namespace CryptoCurrencyInfo {
             var configurationFileApp = new ConfigurationFileApp();
             services.AddMvc();
             services.AddSingleton<IBinanceProcessor>(
-                new BinanceProcessor(new Uri(configurationFileApp.BinanceUrl), new Logger()));
+                new BinanceProcessor(new Uri(configurationFileApp.BinanceUrl)));
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env) {
