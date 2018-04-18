@@ -48,7 +48,6 @@ namespace CryptoCurrencyInfo.Controllers {
 #### StartUp.cs
 ```cs
 using BinanceCryptoCurrency.Processor;
-using BinanceCryptoCurrency.Utility;
 using CryptoCurrencyInfo.Library;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -70,10 +69,10 @@ namespace CryptoCurrencyInfo {
             var configurationFileApp = new ConfigurationFileApp();
             services.AddMvc();
             services.AddSingleton<IBinanceProcessor>(
-                new BinanceProcessor(new Uri(configurationFileApp.BinanceUrl), new Logger()));
+                new BinanceProcessor(new Uri(configurationFileApp.BinanceUrl)));
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env) {
+        public static void Configure(IApplicationBuilder app, IHostingEnvironment env) {
             if (env.IsDevelopment()) {
                 app.UseDeveloperExceptionPage();
             }
