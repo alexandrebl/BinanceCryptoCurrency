@@ -1,18 +1,18 @@
 ﻿using BinanceCryptoCurrency.Domain;
+using BinanceCryptoCurrency.Domain.Entity;
+using BinanceCryptoCurrency.Utility;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Net;
 using System.Net.Http;
-using BinanceCryptoCurrency.Domain.Entity;
-using BinanceCryptoCurrency.Utility;
-using Newtonsoft.Json;
 
 namespace BinanceCryptoCurrency.Processor {
 
     public class BinanceProcessor : IBinanceProcessor {
         readonly Uri _uri;
-        
+
         public BinanceProcessor(Uri uri) {
             _uri = uri;
         }
@@ -20,11 +20,10 @@ namespace BinanceCryptoCurrency.Processor {
         public Response GetTickerLast24Hs() {
             var httpResponseMessage = Get(_uri);
 
-
             return ParseHttpContent(httpResponseMessage);
         }
 
-        Response ParseHttpContent(HttpResponseMessage httpResponseMessage) {
+        private Response ParseHttpContent(HttpResponseMessage httpResponseMessage) {
             if (!httpResponseMessage.IsSuccessStatusCode)
                 return new Response {
                     StatusCode = HttpStatusCode.InternalServerError,
@@ -43,7 +42,6 @@ namespace BinanceCryptoCurrency.Processor {
             var response = new Response { Tickers = tickers, StatusCode = HttpStatusCode.OK };
 
             return response;
-
         }
 
         HttpResponseMessage Get(Uri uri) {

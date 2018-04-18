@@ -5,8 +5,6 @@ VisualStudioVersion = 15.0.27428.2037
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BinanceCryptoCurrency", "BinanceCryptoCurrency\BinanceCryptoCurrency.csproj", "{78C1538E-8EBA-4D8E-8951-8677A28DC7CC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BinanceCryptoCurrencyTest", "BinanceCryptoCurrencyTest\BinanceCryptoCurrencyTest.csproj", "{698EF5F8-0109-4801-B01B-72D3242C8D9D}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -17,10 +15,6 @@ Global
 		{78C1538E-8EBA-4D8E-8951-8677A28DC7CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{78C1538E-8EBA-4D8E-8951-8677A28DC7CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{78C1538E-8EBA-4D8E-8951-8677A28DC7CC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{698EF5F8-0109-4801-B01B-72D3242C8D9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{698EF5F8-0109-4801-B01B-72D3242C8D9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{698EF5F8-0109-4801-B01B-72D3242C8D9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{698EF5F8-0109-4801-B01B-72D3242C8D9D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
