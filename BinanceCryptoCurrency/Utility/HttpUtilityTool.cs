@@ -3,14 +3,12 @@ using System.Net.Http;
 
 namespace BinanceCryptoCurrency.Utility {
 
-    public class HttpUtilityTool {
+    public class HttpUtilityTool : IHttpUtilityTool {
 
         private static readonly HttpClient HttpClient
-            = new HttpClient(new HttpClientHandler() { MaxConnectionsPerServer = 2000 });
+            = new HttpClient(new HttpClientHandler { MaxConnectionsPerServer = 2000 });
 
         public HttpResponseMessage GetData(Uri uri) {
-            HttpClient.BaseAddress = uri;
-
             var httpRequestTask = HttpClient.GetAsync(uri);
 
             var httpResponseMessage = httpRequestTask.Result;

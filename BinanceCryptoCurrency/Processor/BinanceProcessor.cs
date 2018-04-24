@@ -12,9 +12,11 @@ namespace BinanceCryptoCurrency.Processor {
 
     public class BinanceProcessor : IBinanceProcessor {
         private readonly Uri _uri;
+        private static IHttpUtilityTool _httpUtilityTool;
 
-        public BinanceProcessor(Uri uri) {
+        public BinanceProcessor(Uri uri, IHttpUtilityTool httpUtilityTool) {
             _uri = uri;
+            _httpUtilityTool = httpUtilityTool;
         }
 
         public Response GetTickerLast24Hs() {
@@ -45,9 +47,7 @@ namespace BinanceCryptoCurrency.Processor {
         }
 
         private static HttpResponseMessage Get(Uri uri) {
-            var httpUtilityTool = new HttpUtilityTool();
-
-            var httpResponseMessage = httpUtilityTool.GetData(uri);
+            var httpResponseMessage = _httpUtilityTool?.GetData(uri);
 
             return httpResponseMessage;
         }
