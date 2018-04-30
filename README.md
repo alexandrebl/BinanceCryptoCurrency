@@ -1,4 +1,4 @@
-# BinanceCryptoCurrency 0.0.2 (beta version)
+# BinanceCryptoCurrency 0.0.4 (beta version)
 Binance Crypto Currency Client SDK
 
 <strong>Develop branch</strong><br />
@@ -8,9 +8,9 @@ Binance Crypto Currency Client SDK
 <img src="https://ci.appveyor.com/api/projects/status/github/alexandrebl/BinanceCryptoCurrency?branch=master&svg=true" alt="Project Badge" with="300">
 
 ### How to use
-- Package Manager: Install-Package BinanceCryptoCurrency -Version 0.0.2
-- .Net CLI: dotnet add package BinanceCryptoCurrency --version 0.0.2
-- Paket CLI: paket add BinanceCryptoCurrency --version 0.0.2
+- Package Manager: Install-Package BinanceCryptoCurrency
+- .Net CLI: dotnet add package BinanceCryptoCurrency
+- Paket CLI: paket add BinanceCryptoCurrency
 
 ### Nuget Package
 https://www.nuget.org/packages/BinanceCryptoCurrency/
